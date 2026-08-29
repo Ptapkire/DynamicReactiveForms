@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header bg-success">
+                Customer Form
+            </div>
+            <div class="card-body">
+                <form [formGroup]="customerForm">
+                    <div class="row">
+
+                        @for(item of formFields; track $index){
+
+                        @if(!item.isHidden){
+                        <div class="col-6">
+                            <label for="">{{item.label}}</label>
+                            @if(item.type =='text'|| item.type == 'number'){
+                            
+                            <input [type]="item.type" [formControlName]="item.name" [placeholder]="item.placeholder"
+                                class="form-control">
+                            }@else if(item.type == 'checkbox'){
+                             <input type="checkbox" [formControlName]="item.name" [placeholder]="item.placeholder"
+                             class="form-check-input">
+                            }@else if(item.type == 'select'){             
+                                              
+                            <select [formControlName]="item.name" class="form-select">
+                                <option value="">{{item.placeholder}}</option>
+                                @for(opt of item.option; track $index){
+                                <option [value]="opt">{{opt}}</option>
+                                }
+                            </select>
+                            }@else if(item.type == 'textarea'){
+                           
+                            <textarea [formControlName]="item.name" [placeholder]="item.placeholder"
+                                class="form-control"></textarea>
+                            }
+                          </div>
+                            }                        
+                        }
+                        <div class="row mt-2">
+                            <div class="col-6 text-center">
+                                <button class="btn btn-secondary">Reset</button>
+                            </div>
+                            <div class="col-6 text-center">
+                                <div class="btn btn-success" (click)="onSaveCustomer()">Save Customer</div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
