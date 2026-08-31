@@ -10,7 +10,7 @@
                         @for(item of formFields; track $index){
 
                         @if(!item.isHidden){
-                        <div class="col-6">
+                        <div [class]="item.width">
                             <label for="">{{item.label}}</label>
                             @if(item.type =='text'|| item.type == 'number'){
                             

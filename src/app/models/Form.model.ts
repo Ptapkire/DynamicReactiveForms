@@ -9,7 +9,7 @@ export interface FormConfig{
     option : any[];
     validatorFun: ValidatorFn[];
     initialValue : string;
-
+    width:string;
 }
 
 // { name:'userId', lable:'', isHidden: true, placeholder: '', type: 'number', option:[], validatorFun: []},
