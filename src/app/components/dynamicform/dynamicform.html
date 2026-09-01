@@ -33,7 +33,16 @@
                                 class="form-control"></textarea>
                             }
                           </div>
-                            }                        
+                          <div class="text-danger">
+                              @if(getControl(item.name)?.invalid){
+                                 @if(getControl(item.name)?.errors?.['required']){
+                                    {{item.name}} is required
+                                 }@else if(getControl(item.name)?.errors?.['minlength']){
+                                     Min{{getControl(item.name)?.errors?.['minlength'].requiredLength}} chars are required.
+                                 }
+                              }
+                          </div>
+                         }                        
                         }
                         <div class="row mt-2">
                             <div class="col-6 text-center">

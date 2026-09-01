@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormConfig } from '../../models/Form.model';
 import { GlobalConstant } from '../../global.constant';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dynamicform',
@@ -29,6 +29,10 @@ export class Dynamicform {
        formGroup[field.name] = [field.initialValue,field.validatorFun.length != 0 ? field.validatorFun:[]];
     }
     return this.formBuilder.group(formGroup);   
+   }
+
+   getControl(controlName:string): AbstractControl | null{
+       return this.customerForm.get(controlName);
    }
 
    onSaveCustomer(){
